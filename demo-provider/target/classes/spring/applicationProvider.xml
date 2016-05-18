@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+    <dubbo:application name="userservice" />
+    <dubbo:registry protocol="zookeeper"  address="10.211.55.3:2181"  />
+   	<dubbo:protocol name="dubbo" host="10.211.55.2" threads="10" port="20888" />
+    <dubbo:service interface="com.testdubbo.service.UserService" ref="demoService" executes="10" />
+    <bean id="demoService" class="com.testdubbo.serviceimpl.UserServiceImpl" />
+</beans>
